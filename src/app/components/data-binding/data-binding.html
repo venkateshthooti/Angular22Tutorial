@@ -1,0 +1,72 @@
+<p>data-binding works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Interpolation</th>
+            <th>Property Binding</th>
+            <th colspan="2">Event Binding</th>
+            <th>Two-way Binding</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <!-- Interpolation -->
+
+                {{ productName }}
+                <span>{{ productPrice }}</span>
+
+                <!-- Plain input -->
+                <input type="text" value="{{ productName }}" />
+                <input type="text" type="{{myDynamicTypeAttribute}}" />
+
+                <!-- Interpolation won't work for maxlength because it's a property,-->
+                <!-- <input type="text" maxlength="{{maxLengthChar}}" /> -->
+            </td>
+            <td>
+                <!-- Property binding -->
+                <input type="text" [maxLength]="maxLengthChar" />
+                <input type="text" [value]="productName" />
+                <!-- value and type properties work for interpolation and property binding -->
+                <input type="text" [type]="myDynamicTypeAttribute" />
+
+            </td>
+            <td>
+                <!-- Event binding -->
+                <button (click)="changeInputTypeTexttoRadio(); showWelcomeMessage()">
+                    Change Input Type
+                </button>
+
+            </td>
+            <td>
+                <select name="" id="" (change)="onChangeDropdownEvent($event)">
+                    <option>Mobile</option>
+                    <option value="HP Laptop">Laptop</option>
+                    <option value="Sony Headphones">Headphones</option>
+                    <option value="Oppo Charger">Charger</option>
+                </select>
+            </td>
+            <!-- Two-way Binding -->
+            <td>
+                <input type="text" [(ngModel)]="productName" />
+                <p>{{ productName }}</p>
+                
+                <select name="" id=""  [(ngModel)]="productName">
+                    <option >Mobile</option>
+                    <option value="HP Laptop">Laptop</option>
+                    <option value="Sony Headphones">Headphones</option>
+                    <option value="Oppo Charger">Charger</option>
+                </select>
+                <input type="checkbox" [(ngModel)]="isCheckedCheckbox" /> IsProductAvailable: {{ isCheckedCheckbox }}
+                <input type="checkbox" checked/> 
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<div class="circle" (mouseenter)="onMouseEnterCircle($event)" (mouseleave)="onMouseLeaveCircle($event)">
+    <span>{{ circleText }}</span>
+
+</div>
