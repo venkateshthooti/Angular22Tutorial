@@ -4,6 +4,7 @@ import { DataBinding } from './components/data-binding/data-binding';
 import { Directives } from './components/directives/directives';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { Logo } from './components/logo/logo';
+import { TemplateForm } from './components/template-form/template-form';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,11 @@ export const routes: Routes = [
     {
         path: 'control-flow',
         component: ControlFlow
+    },
+    {
+        path:'template-form',
+        component:TemplateForm
+
     },
     {
         path: '',

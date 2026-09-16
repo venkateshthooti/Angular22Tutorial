@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Company List
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4 ">
+        <div class="card">
+            <div class="card-header bg-warning">
+                New company
+            </div>
+            <div class="card-body">
+                <form #form="ngForm">
+                    <div class="row mb-3 g-3">
+                        <!-- <div class="col-md-6">
+                            <label for="companyId" class="form-label">Company ID</label>
+                            <input [(ngModel)]="companyObj.companyId" type="number" class="form-control" nd" name="companyId">
+                        </div> -->
+                        <div class="col-md-6">
+                            <label for="companyName" class="form-label">Company Name</label>
+                            <input required minlength="5" #companyNameErrors=ngModel
+                                [(ngModel)]="companyObj.companyName" type="text" class="form-control" name="companyName"
+                                (input)="companyInputErrors(companyNameErrors)">
+
+                            <div class="text-danger">
+                                @if (companyNameErrors.errors?.['required']) {
+                                <span>This is required</span>
+                                }
+                                @if (companyNameErrors.errors?.['minlength']) {
+                                <span>Min 5 char are required</span>
+                                }
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="pinCode" class="form-label">Pin Code</label>
+                            <input required minlength="6" #pincodeErrors=ngModel [(ngModel)]="companyObj.pinCode"
+                                (ngModelChange)="onPincodeChange()" type="text" class="form-control" name="pinCode">
+                            <div class="text-danger">
+                                @if (pincodeErrors.errors?.['required']) {
+                                <span>This is required</span>
+                                }
+                                @if (pincodeErrors.errors?.['minlength']) {
+                                <span>Min 6 char are needed</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Address</label>
+                            <input [(ngModel)]="companyObj.address" type="text" class="form-control" name="address">
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input #phoneNumberErrors=ngModel [(ngModel)]="companyObj.phone" type="text"
+                                class="form-control" required minlength="10" maxlength="10" name="phone">
+                            <div class="text-danger">
+                                @if (phoneNumberErrors.errors?.['required']) {
+                                <span>Phone is required</span>
+                                }
+                                @if (phoneNumberErrors.errors?.["minlength"]) {
+                                <span>Min 10 char needed</span>
+                                }
+                                @if (phoneNumberErrors.errors?.['maxlength']) {
+                                <span>Max 10 char needed</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button [disabled]="form.invalid" (click)="onSaveComapny(form)" type="submit"
+                                class="btn btn-success me-2" (click)="onSaveComapny(form)">Save</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
