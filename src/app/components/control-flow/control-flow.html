@@ -1,1 +1,126 @@
-<p>control-flow works!</p>
+<h3>"If@" Control Flow</h3>
+<div class="row row1">
+    @if (isDivisible) {
+    <div class="col-3">
+
+        <div class="bg-primary p-4">
+            div 1
+        </div>
+
+    </div>
+    }
+
+    <div class="col-3">
+        <button class="btn btn-warning" (click)="divVisible()">
+            Toggle
+        </button>---{{isDivisible}}
+    </div>
+
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isOfferAvailable" /> is offer available
+        @if (isOfferAvailable) {
+        <input type="search" placeholder="Enter code" />
+        } @else {
+        <p>No offer code available</p>
+        }
+    </div>
+    <div class="col-3">
+
+
+        @if (orderStatus === 'placed') {
+        <h2 class="text-info">Order Placed </h2>
+        }
+        @else if (orderStatus === 'shipping') {
+        <h2 class="text-warning">Order shipping </h2>
+        }
+        @else if (orderStatus === 'delivered') {
+        <h2 class="text-success">Order delivered </h2>
+        }
+        @else {
+        <h2 class="text-danger">Order cancelled </h2>
+        }
+        <div>
+            <select class="form-select" [(ngModel)]="orderStatus">
+                <option value="placed">Placed</option>
+                <option value="shipping">Shipping</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </div>
+    </div>
+
+
+
+</div>
+
+<h3>"for@" control flow</h3>
+<div class="row row2">
+    <div class="col-3">
+        <select class="form-select" [(ngModel)]="selectedCity">
+            <option value="">Select City</option>
+            @for (city of cityList; track $index) {
+            <option [value]="city">{{city}}</option>
+            }
+        </select>----{{selectedCity}}
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (city of cityList; track $index) {
+            <li>{{city}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-5">
+        @for (city of cityList; track $index) {
+        <button class="btn btn-primary" (click)="selectedCity = city">{{city}}</button>
+        }
+    </div>
+    <div class="col-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Roll Number</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (student of studentList; track $index) {
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.city}}</td>
+                    <td>{{student.rollNo}}</td>
+                    <td>{{student.age}}</td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3">
+        <select [(ngModel)]="selectedStudentId" class="form-select">
+            @for (student of studentList; track $index) {
+            <option [value]="student.studId">{{student.name}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-2">
+        selected student Id:>>> {{selectedStudentId}}
+    </div>
+</div>
+<div class="row">
+    @for (student of studentList; track $index) {
+    <div class="col-3 card card-header mt-3">
+        <div class="card-body ">
+            <h5 class="card-title">{{student.name}}</h5>
+            <p class="card-text">{{student.city}}</p>
+            <p >Roll Number: {{student.rollNo}}</p>
+            <button class="btn btn-warning">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+    }
+</div>

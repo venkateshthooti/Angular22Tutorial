@@ -3,8 +3,13 @@ import { Variables } from './components/variables/variables';
 import { DataBinding } from './components/data-binding/data-binding';
 import { Directives } from './components/directives/directives';
 import { ControlFlow } from './components/control-flow/control-flow';
+import { Logo } from './components/logo/logo';
 
 export const routes: Routes = [
+    {
+        path: 'logo',
+        component:Logo
+    },
     {
         path: 'variables',
         component: Variables
@@ -23,12 +28,12 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'data-binding',
+        redirectTo: 'logo',
         pathMatch: 'full'
     },
     {
         path: '**',
-        redirectTo: 'data-binding',
+        redirectTo: 'logo',
         pathMatch: 'full'
     }
 ];
