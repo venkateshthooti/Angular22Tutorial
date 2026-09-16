@@ -1,1 +1,72 @@
-<p>directives works!</p>
+//structural directive *ngIf and *ngFor
+//attribute directive [ngClass] and [ngStyle] , we can add dynamic class and style to the element
+//constom directive
+//component is also a directive
+
+<h2>Dynamic Classess [NgClass]</h2>
+<div class="row">
+    <div class="col-3">
+        <div class="p-4" [ngClass]="divBgColor">
+            Div1
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="ischecked==true ? bgSuccess : bgDanger">
+            Div2
+        </div>
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="inputText" placeholder="Enter text" />
+        <h2 [ngClass]="lengthStatus ? textSuccess: textDanger">
+            {{lengthStatus? successMessage : dangerMessage}}
+        </h2>
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="inputText" placeholder="Enter text" />
+        <h2 [ngClass]="inputText.length > 5 ? textDanger : textSuccess">
+            {{inputText.length > 5 ? dangerMessage : successMessage}}
+        </h2>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+
+        <button class="btn btn-warning" (click)="divSucess(bgSuccess)">
+            sucess
+        </button>
+        <button class="btn btn-danger" (click)="divSucess(bgDanger)">
+            danger
+        </button>
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="ischecked" />Is offer available ----{{ischecked}}
+    </div>
+    <div class="col-3">
+        <button class="btn btn-primary" (click)="checkLength(inputText)">check length</button>
+
+    </div>
+</div>
+
+<hr>
+
+<h2>Dynamic Styles [NgStyle]</h2>
+
+<div class="row">
+    <div class="col-3" [ngStyle]="{'background-color': inputColorValue, 'color': 'black', 'padding': '20px'}">
+        Div3
+    </div>
+    <div class="col-3" [ngStyle]=Div4shapeType>
+        Div4
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type=color [(ngModel)]="inputColorValue" /> <br> color name: {{inputColorValue}}
+    </div>
+    <div class="col-3">
+        <button type="button" (click)="changeCircleType('circle')" class="btn btn-primary">Toggle Circle</button> 
+        <button type="button" (click)="changeCircleType('square')" class="btn btn-primary">Toggle Square</button> 
+    </div>
+</div>
