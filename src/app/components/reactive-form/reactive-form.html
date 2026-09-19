@@ -1,0 +1,89 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header bg-primary">
+                    Card List
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>User Registration</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="userForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="userName" class="form-label">User Name</label>
+                                <input formControlName="userName" type="text" class="form-control" id="userName"
+                                    formControlName="userName" placeholder="Enter username">
+                                <div class="text-danger">
+                                    @if (userForm.controls['userName'].errors?.['required']) {
+                                    <span>This is required</span>
+                                    }
+                                    @if (userForm.controls['userName'].errors?.['minlength']) {
+                                    <span>Min 4 char needed</span>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="emailId" class="form-label">Email ID</label>
+                                <input formControlName="emailId" type="email" class="form-control" id="emailId"
+                                    formControlName="emailId" placeholder="Enter email address">
+                                <div class="text-danger">
+                                    @if (userForm.controls['emailId'].errors?.['required']) {
+                                    <span>Email is required</span>
+                                    }
+                                    @if (userForm.controls['emailId'].errors?.['email']) {
+                                    <span>Email is not in correct format</span>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input formControlName="fullName" type="text" class="form-control" id="fullName"
+                                    formControlName="fullName" placeholder="Enter full name">
+                                <div class="text-danger">
+                                    @if (userForm.controls['fullName'].errors?.['required']) {
+                                    <span>Full name is required</span>
+                                    }
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input formControlName="password" type="password" class="form-control" id="password"
+                                    formControlName="password" placeholder="Enter password">
+                                <div class="text-danger">
+                                    @if (userForm.controls['password'].errors?.['required']) {
+                                    <span>Password is required</span>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" [disabled]="userForm.invalid" (click)="onSubmitUserForm()"
+                                class="btn btn-success me-2">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -5,6 +5,7 @@ import { Directives } from './components/directives/directives';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { Logo } from './components/logo/logo';
 import { TemplateForm } from './components/template-form/template-form';
+import { ReactiveForm } from './components/reactive-form/reactive-form';
 
 export const routes: Routes = [
     {
@@ -30,6 +31,11 @@ export const routes: Routes = [
     {
         path:'template-form',
         component:TemplateForm
+
+    },
+     {
+        path:'reactive-form',
+        component:ReactiveForm
 
     },
     {
