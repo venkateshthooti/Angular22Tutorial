@@ -1,1 +1,27 @@
-<p>signal-basic works!</p>
+<div class="row">
+    <div class="col-3">
+        {{empName}}
+    </div>
+    <div class="col-3">
+        Signal => {{empMobileNo()}}
+    </div>
+    <div class="col-3">
+        Is Emp Active => {{isEmpActive()}}
+    </div>
+     <div class="col-3">
+        <ul class="">
+            @for (item of cityList(); track $index) {
+            <li>{{item}}</li>
+            }
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="onChangeName()">Change name</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="onMobileNoChangeUsingSignal()">Change Mobile No</button>
+    </div>
+</div>
