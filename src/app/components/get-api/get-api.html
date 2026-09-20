@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (item of userList(); track $index) {
+            <li>{{item.name}} {{item.email}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-5">
+        @for (item of photosList(); track $index) {
+        <div class="row">
+            <div class="col-3 bg-success m-2">
+                {{item.title}}
+            </div>
+            <div class="col-4 bg-success m-2">
+                <img src="item.thumbnailUrl" alt="">
+                {{item.url}}
+            </div>
+
+        </div>
+        }
+    </div>
+    <div class="col-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr no</th>
+                    <th>vendorId</th>
+                    <th>vendorName</th>
+                    <th>contactNo</th>
+                    <th>emailId</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of vendorsList(); track $index) {
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{item.vendorId}}</td>
+                    <td>{{item.vendorName}}</td>
+                    <td>{{item.contactNo}}</td>
+                    <td>{{item.emailId}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
