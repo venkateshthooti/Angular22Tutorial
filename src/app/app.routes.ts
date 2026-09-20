@@ -8,6 +8,7 @@ import { TemplateForm } from './components/template-form/template-form';
 import { ReactiveForm } from './components/reactive-form/reactive-form';
 import { SignalBasic } from './components/signal-basic/signal-basic';
 import { SignalForm } from './components/signal-form/signal-form';
+import { GetApi } from './components/get-api/get-api';
 
 export const routes: Routes = [
     {
@@ -47,6 +48,9 @@ export const routes: Routes = [
     {
         path:'signal-form',
         component:SignalForm
+    },{
+        path:'get-api',
+        component:GetApi
     },
     {
         path: '',
