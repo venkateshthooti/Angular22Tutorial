@@ -26,7 +26,10 @@ export class DataBinding {
     console.log("This will be called second : Welcome message displayed ");
   }
   onChangeDropdownEvent(myEvent: Event) {
-    // This will give error as target is of type EventTarget and it does not have value property. So we need to typecast it to HTMLSelectElement it works for any type of input element like text, radio, checkbox, select etc. So we need to typecast it to HTMLInputElement or HTMLSelectElement or HTMLTextAreaElement etc. depending on the type of input element we are using.
+    // This will give error as target is of type EventTarget and it does not have value property. 
+    // So we need to typecast it to HTMLSelectElement it works for any type of input element like text, 
+    // radio, checkbox, select etc. So we need to typecast it to HTMLInputElement or HTMLSelectElement 
+    // or HTMLTextAreaElement etc. depending on the type of input element we are using.
     // alert("Dropdown value changed to : " + myEvent.target.value); 
     
     console.log("seelct element object : " + myEvent);
