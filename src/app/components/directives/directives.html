@@ -21,7 +21,7 @@
             {{lengthStatus? successMessage : dangerMessage}}
         </h2>
     </div>
-    <div class="col-3">
+    <div class="">
         <input type="text" [(ngModel)]="inputText" placeholder="Enter text" />
         <h2 [ngClass]="inputText.length > 5 ? textDanger : textSuccess">
             {{inputText.length > 5 ? dangerMessage : successMessage}}

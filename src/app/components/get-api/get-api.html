@@ -1,47 +1,98 @@
-<div class="row">
+<div class="row p-3">
     <div class="col-3">
+
+        <input pInputText />
         <ul>
             @for (item of userList(); track $index) {
             <li>{{item.name}} {{item.email}}</li>
             }
         </ul>
     </div>
-    <div class="col-5">
+    <div class="col-4">
         @for (item of photosList(); track $index) {
-        <div class="row">
-            <div class="col-3 bg-success m-2">
+        <div class="row mt-2">
+            <div class="col-6 bg-success">
                 {{item.title}}
             </div>
-            <div class="col-4 bg-success m-2">
-                <img src="item.thumbnailUrl" alt="">
-                {{item.url}}
+            <div class="col-6">
+                <div class="card">
+                    <img [src]="item.thumbnailUrl" class="card-img-top" alt="thumbnail">
+                    <div class="card-body">
+                        <p class="card-text text-wrap">{{ item.url }}</p>
+                    </div>
+                </div>
             </div>
 
         </div>
         }
     </div>
-    <div class="col-4">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Sr no</th>
-                    <th>vendorId</th>
-                    <th>vendorName</th>
-                    <th>contactNo</th>
-                    <th>emailId</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (item of vendorsList(); track $index) {
-                <tr>
-                    <td>{{$index}}</td>
-                    <td>{{item.vendorId}}</td>
-                    <td>{{item.vendorName}}</td>
-                    <td>{{item.contactNo}}</td>
-                    <td>{{item.emailId}}</td>
-                </tr>
+    <!-- <div class="col-5">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr no</th>
+                        <th>vendorId</th>
+                        <th>vendorName</th>
+                        <th>contactNo</th>
+                        <th>emailId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of vendorsList(); track $index) {
+                    <tr>
+                        <td>{{$index}}</td>
+                        <td>{{item.vendorId}}</td>
+                        <td>{{item.vendorName}}</td>
+                        <td>{{item.contactNo}}</td>
+                        <td>{{item.emailId}}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+    <div class="col-5">
+        <div class="table-responsive">
+
+            <div class="table-container" (scroll)="onTableScroll($event)">
+
+                <p-table [value]="vendorsList()">
+
+                    <ng-template #header>
+                        <tr>
+                            <th>Sr no</th>
+                            <th>vendorId</th>
+                            <th>vendorName</th>
+                            <th>contactNo</th>
+                            <th>emailId</th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template #body let-item let-rowIndex="rowIndex">
+                        <tr>
+                            <td>{{ rowIndex + 1 }}</td>
+                            <td>{{ item.vendorId }}</td>
+                            <td>{{ item.vendorName }}</td>
+                            <td>{{ item.contactNo }}</td>
+                            <td>{{ item.emailId }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                @if (isLoading())
+                {
+                <div class="bottom-loader">
+                    <div class="loader"></div>
+                    <div class="flex justify-center">
+                        <p-progress-spinner ariaLabel="loading" />
+                    </div>
+                    <!-- <span>Loading more vendors...</span> -->
+                </div>
                 }
-            </tbody>
-        </table>
+            </div>
+
+
+
+        </div>
     </div>
 </div>

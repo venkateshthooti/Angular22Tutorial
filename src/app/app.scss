@@ -11,36 +11,8 @@ p {
   margin-bottom: 20px;
 }
 
-table {
-  width: 100%;
-  border: 1px solid black;
-  border-collapse: collapse;
-
-  thead {
-    tr {
-      border: 1px solid rgb(247, 12, 12);
-
-      th {
-        border: 1px solid red;
-        padding: 8px;
-        text-align: center;
-        background-color: #f9f9f9;
-      }
-    }
-  }
-
-  tbody {
-    tr {
-      border: 1px solid black;
-
-      td {
-        border: 1px solid black;
-        padding: 10px;
-        text-align: center;
-        vertical-align: middle;
-      }
-    }
-  }
+li{
+  width: 100px;
 }
 .active{
   color: red!important;
