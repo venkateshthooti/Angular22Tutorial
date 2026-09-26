@@ -9,6 +9,7 @@ import { ReactiveForm } from './components/reactive-form/reactive-form';
 import { SignalBasic } from './components/signal-basic/signal-basic';
 import { SignalForm } from './components/signal-form/signal-form';
 import { GetApi } from './components/get-api/get-api';
+import { ClientCrudGETPUTPostDelete } from './components/client-crud-get-put-post-delete/client-crud-get-put-post-delete';
 
 export const routes: Routes = [
     {
@@ -51,6 +52,10 @@ export const routes: Routes = [
     },{
         path:'get-api',
         component:GetApi
+    },
+    {
+        path:'clients',
+        component:ClientCrudGETPUTPostDelete
     },
     {
         path: '',
