@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { response } from 'express';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-client-crud-get-put-post-delete',
@@ -38,24 +39,55 @@ export class ClientCrudGETPUTPostDelete {
 
   clientDetailsForm = form(this.clientDetailsModel)
 
+  clientCradNumber = "9999888877776666"
+  formattedClientCardNumber = ""
 
-
-  constructor() {
+  constructor(private masterServ: Master) {
     this.getAllClients()
+    debugger;
+    const loggeduserName = this.masterServ.loggeduser
+    this.formattedClientCardNumber = this.masterServ.getFormatedCardNumber(this.clientCradNumber)
   }
   clientsList: WritableSignal<any[]> = signal([])
+
+  // getAllClients() {
+  //   this.httpClient.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
+  //     next: (response: any) => {
+  //       this.clientsList.set(response.data)
+  //     }, error(err: any) {
+  //       alert("Failed getting client details : " + err)
+  //     }
+  //   })
+  // }
   getAllClients() {
-    this.httpClient.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
+    debugger
+    this.masterServ.getClients().subscribe({
       next: (response: any) => {
+        debugger
         this.clientsList.set(response.data)
       }, error(err: any) {
         alert("Failed getting client details : " + err)
       }
     })
   }
+  // onSavePostClient() {
+  //   debugger;
+  //   this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/AddClient", this.clientDetailsForm().value()).subscribe({
+  //     next: (response: any) => {
+  //       if (response.result) {
+  //         alert("Client details posted successfully")
+  //       } else {
+  //         alert(response.message)
+  //       }
+  //       this.getAllClients()
+  //     }, error(err: any) {
+
+  //     }
+  //   })
+  // }
   onSavePostClient() {
-    //debugger;
-    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/AddClient", this.clientDetailsForm().value()).subscribe({
+    debugger
+    this.masterServ.postSaveClient(this.clientDetailsForm().value()).subscribe({
       next: (response: any) => {
         if (response.result) {
           alert("Client details posted successfully")
@@ -64,7 +96,6 @@ export class ClientCrudGETPUTPostDelete {
         }
         this.getAllClients()
       }, error(err: any) {
-
       }
     })
   }

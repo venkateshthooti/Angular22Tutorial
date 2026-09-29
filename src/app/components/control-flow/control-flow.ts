@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../services/master';
+
 
 @Component({
   selector: 'app-control-flow',
@@ -9,7 +11,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class ControlFlow {
 
-
+  masterService = inject(Master)
+  originalcarNumber = "1111222233334444"
+  formattedCardNumber:string=''
+  constructor() {
+    this.formattedCardNumber= this.masterService.getFormatedCardNumber(this.originalcarNumber)
+    debugger
+  }
   isDivisible: boolean = true;
   divVisible() {
     this.isDivisible = !this.isDivisible;
@@ -20,15 +28,20 @@ export class ControlFlow {
   selectedCity: string = '';
   cityList: string[] = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
   studentList: { studId: number, name: string, city: string, rollNo: number, age: number }[] = [
-    {studId: 101, name: 'John Doe', city: 'New York', rollNo: 1, age: 20 },
-    {studId: 102, name: 'Jane Smith', city: 'Los Angeles', rollNo: 2, age: 22 },
-    {studId: 103, name: 'Bob Johnson', city: 'Chicago', rollNo: 3, age: 21 },
-    {studId: 104, name: 'Alice Brown', city: 'Houston', rollNo: 4, age: 23 },
-    {studId: 105, name: 'Charlie Davis', city: 'Phoenix', rollNo: 5, age: 20 },
-     {studId: 103, name: 'Bob Johnson', city: 'Chicago', rollNo: 3, age: 21 },
-    {studId: 104, name: 'Alice Brown', city: 'Houston', rollNo: 4, age: 23 },
-    {studId: 105, name: 'Charlie Davis', city: 'Phoenix', rollNo: 5, age: 20 }
+    { studId: 101, name: 'John Doe', city: 'New York', rollNo: 1, age: 20 },
+    { studId: 102, name: 'Jane Smith', city: 'Los Angeles', rollNo: 2, age: 22 },
+    { studId: 103, name: 'Bob Johnson', city: 'Chicago', rollNo: 3, age: 21 },
+    { studId: 104, name: 'Alice Brown', city: 'Houston', rollNo: 4, age: 23 },
+    { studId: 105, name: 'Charlie Davis', city: 'Phoenix', rollNo: 5, age: 20 },
+    { studId: 103, name: 'Bob Johnson', city: 'Chicago', rollNo: 3, age: 21 },
+    { studId: 104, name: 'Alice Brown', city: 'Houston', rollNo: 4, age: 23 },
+    { studId: 105, name: 'Charlie Davis', city: 'Phoenix', rollNo: 5, age: 20 }
   ];
-  selectedStudentId:string = '';
+  selectedStudentId: string = '';
+
+  storeData() {
+    debugger;
+    this.masterService.loggeduser = "Chetan Jogi"
+  }
 
 }
