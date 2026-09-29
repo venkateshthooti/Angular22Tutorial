@@ -1,1 +1,79 @@
-<p>bus-booking works!</p>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+               Bus-Vendors-List
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sr no</th>
+                            <th>vendorName</th>
+                            <th>contactNo</th>
+                            <th>emailId</th>
+                            <th>Actions</th>
+                          
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for( item of busVendorsList(); track $index) {
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{item.vendorName}}</td>
+                            <td>{{item.contactNo}}</td>
+                            <td>{{item.emailId}}</td>
+                           <td>
+                            <button class="btn bg-warning" (click)="onEdit(item)">Edit</button>
+                            <button class="btn bg-danger mt-2" (click)="onDelete(item.vendorId)">Delete</button>
+                           </td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-warning">
+                New-Vendor
+            </div>
+            <div class="card-body">
+                <form action="">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label for="" class="form-label" >vendorName</label>
+                            <input type="text" class="form-control" [formField]="busVendorsForm.vendorName" placeholder="enter clientName">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">contactNo</label>
+                            <input type="text" class="form-control" [formField]="busVendorsForm.contactNo" placeholder="enter businessName">
+                        </div>
+                        <div class="col-6" >
+                            <label for="" class="form-label">emailId</label>
+                            <input type="text" class="form-control" [formField]="busVendorsForm.emailId" placeholder="Enter contactPerson">
+                        </div>
+                       
+                        <div class="col-12 text-end">
+                            @if (busVendorsModel().vendorId==0) {
+                                <button class="btn btn-warning me-2" (click)="onSavePostBusVendor()">Save</button>
+                            }
+                            @else {
+                                <button class="btn btn-info me-2" (click)="onUpdateBusVendor()">Update</button>
+                            }
+                            <button class="btn btn-warning" >Reset</button>
+                        </div>
+                      
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -36,82 +36,85 @@ export class ClientCrudGETPUTPostDelete {
     "logo": ""
   })
 
-  clientDetailsForm=form(this.clientDetailsModel)
+  clientDetailsForm = form(this.clientDetailsModel)
 
 
 
   constructor() {
     this.getAllClients()
   }
-  clientsList:WritableSignal<any[]>=signal([])
+  clientsList: WritableSignal<any[]> = signal([])
   getAllClients() {
     this.httpClient.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
-      next:(response:any)=>{
+      next: (response: any) => {
         this.clientsList.set(response.data)
-      },error(err:any){
-        alert("Failed getting client details : "+err)
+      }, error(err: any) {
+        alert("Failed getting client details : " + err)
       }
     })
   }
-  onSavePostClient(){
+  onSavePostClient() {
     //debugger;
-    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/AddClient",this.clientDetailsForm().value()).subscribe({
-      next:(response:any)=>{
-        if(response.result){
+    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/AddClient", this.clientDetailsForm().value()).subscribe({
+      next: (response: any) => {
+        if (response.result) {
           alert("Client details posted successfully")
-        }else{
+        } else {
           alert(response.message)
         }
         this.getAllClients()
-      },error(err:any){
-        
-      }
-    })
-  }
-  onEdit(item:any){
-    //debugger;
-    this.clientDetailsModel.set({
-    "clientId": item.clientId,
-    "clientName": item.clientName,
-    "businessName": item.businessName,
-    "contactPerson": item.contactPerson,
-    "contactNo": item.contactNo,
-    "altContactNo": item.altContactNo,
-    "email": item.email,
-    "createdDate": item.createdDate,
-    "logo": item.logo,
-  })
-  }
-  onUpdateClientDetails(){
-    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/UpdateClient",this.clientDetailsForm().value())
-    .subscribe({
-      next:(response:any)=>{
-        if(response.result){
-          alert("Record Updated successfully")
-        }else{
-          alert("updation failed")
-        }
+      }, error(err: any) {
 
       }
     })
   }
-  onDelete(clientDetails:any){
-    debugger;
-    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/DeleteClient?id="+clientDetails.clientId,{}).subscribe({
-      next:(response:any)=>{
-        if(response.result){
-          debugger;
-          alert("Client details Deleted successfully")
-        }else{
-          alert(response.message)
+  onEdit(item: any) {
+    //debugger;
+    this.clientDetailsModel.set({
+      "clientId": item.clientId,
+      "clientName": item.clientName,
+      "businessName": item.businessName,
+      "contactPerson": item.contactPerson,
+      "contactNo": item.contactNo,
+      "altContactNo": item.altContactNo,
+      "email": item.email,
+      "createdDate": item.createdDate,
+      "logo": item.logo,
+    })
+  }
+  onUpdateClientDetails() {
+    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/UpdateClient", this.clientDetailsForm().value())
+      .subscribe({
+        next: (response: any) => {
+          if (response.result) {
+            alert("Record Updated successfully")
+          } else {
+            alert("updation failed")
+          }
+
         }
-        this.getAllClients()
-      },error(err:any){
-        
+      })
+  }
+  deletePayload = signal({});
+
+  onDelete(cid: number) {
+    debugger;
+    this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/DeleteClient?id=" + cid, {}).subscribe({
+      next: (response: any) => {
+        console.log("Request to clientId =", cid)
+        console.log('Delete response:', response);
+
+        if (response.result) {
+          alert('Client details deleted successfully');
+          this.getAllClients();
+        } else {
+          alert(response.message);
+        }
+      },
+      error: (err: any) => {
+        console.error('Delete API error:', err);
       }
     })
-     
-    
   }
   // onReset(){
   //   this.clientDetailsModel.set({
