@@ -10,6 +10,7 @@ import { SignalBasic } from './components/signal-basic/signal-basic';
 import { SignalForm } from './components/signal-form/signal-form';
 import { GetApi } from './components/get-api/get-api';
 import { ClientCrudGETPUTPostDelete } from './components/client-crud-get-put-post-delete/client-crud-get-put-post-delete';
+import { BusBooking } from './components/bus-booking/bus-booking';
 
 export const routes: Routes = [
     {
@@ -56,6 +57,10 @@ export const routes: Routes = [
     {
         path:'clients',
         component:ClientCrudGETPUTPostDelete
+    },
+    {
+        path:'bus-booking',
+        component:BusBooking
     },
     {
         path: '',
