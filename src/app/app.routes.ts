@@ -12,6 +12,7 @@ import { GetApi } from './components/get-api/get-api';
 import { ClientCrudGETPUTPostDelete } from './components/client-crud-get-put-post-delete/client-crud-get-put-post-delete';
 import { BusBooking } from './components/bus-booking/bus-booking';
 import { Pipes } from './components/pipes/pipes';
+import { LifeCycleEvents } from './components/life-cycle-events/life-cycle-events';
 
 export const routes: Routes = [
     {
@@ -66,6 +67,10 @@ export const routes: Routes = [
     {
         path: 'pipes',
         component:Pipes
+    },
+    {
+        path:'life-cycle',
+        component:LifeCycleEvents
     },
     {
         path: '',
