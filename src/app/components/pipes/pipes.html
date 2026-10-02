@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-3">
+      Lower case to Upper case =>  {{studentName}}
+    </div>
+    <!-- <div class="col-3">
+        {{uppercaseStudentName}}
+    </div> -->
+    <div class="col-3">
+        {{studentName | uppercase}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        Original => {{address}}
+    </div>
+    <div class="col-4">
+        Upper case to Lower => {{address | lowercase}}
+    </div>
+    <div class="col-4">
+      Fist letter capital =>  {{address | titlecase}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        Decimal pipe => {{productPrice}}
+    </div>
+    <div class="col-3">
+        {{productPrice | number}}
+    </div>
+    <div class="col-3">
+      decimal pipe =>  {{productPrice | number:'1.2-2'}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        Original Array=> {{rollNoList}}
+    </div>
+    <div class="col-3">
+        slice array only start => {{rollNoList | slice:3}}
+    </div>
+    <div class="col-3">
+      slice array start and end =>  {{rollNoList | slice:2:5}}
+    </div>
+     <div class="col-3">
+      slice STRING start and end =>  {{studentName | slice:0:3}}
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-3">
+        student object original => {{studentObj}}
+    </div>
+    <div class="col-6">
+        student object to JSON stirng =>  {{studentObj | json}}
+        
+        //it will convert tpe script object to Json String
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-3">
+        original Date => {{currentDate}}
+    </div>
+    <div class="col-3">
+        Date pipe=>  {{currentDate | date:'dd-mm-yyyy'}}
+    </div>
+    <div class="col-3">
+        Date pipe=>  {{currentDate | date:'dd-MMMM-yy'}}
+    </div><div class="col-3">
+        Date pipe=>  {{currentDate | date:'dd-MMM-yyy'}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        original card number => {{cardNumber}}
+    </div>
+    <div class="col-3">
+        using custom pipe pipe=>  {{cardNumber | customPipe}}
+    </div>
+   
+</div>
