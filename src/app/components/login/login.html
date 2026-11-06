@@ -1,0 +1,72 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="card shadow p-4" style="width: 400px;">
+
+        <div class="card-body">
+
+            <h3 class="text-center mb-2">Welcome Back!</h3>
+            <p class="text-center text-muted mb-4">Please login to your account</p>
+
+            <form (ngSubmit)="onLogin()">
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label" >Email Address</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Enter your email"
+                        [(ngModel)]="loginObjApi.EmailId"
+                        name="EmailId"
+                        required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Enter your password"
+                        [(ngModel)]="loginObjApi.Password"
+                        name="Password"
+                        required>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="rememberMe">
+
+                        <label class="form-check-label" for="rememberMe">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <a href="#" class="text-decoration-none">Forgot Password?</a>
+
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="btn btn-primary w-100">
+                    Login
+                </button>
+
+                <p class="text-center mt-4 mb-0">
+                    Don't have an account?
+                    <a href="#" class="text-decoration-none">Sign Up</a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
