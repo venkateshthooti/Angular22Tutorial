@@ -34,6 +34,7 @@ export class Login {
       next: (res: any) => {
         if (this.loginObjApi.EmailId == res.data.emailId) {
           localStorage.setItem("userEmailId", res.data.emailId)
+          localStorage.setItem("resLoginToken", res.data.token)
           this.router.navigateByUrl('adminLayout/logo')
         }
         else {
