@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { log } from 'console';
 
 @Component({
   selector: 'app-variables',
