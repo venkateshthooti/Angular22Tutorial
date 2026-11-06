@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, signal } from '@angular/core';
 
 @Component({
   selector: 'app-logo',
@@ -6,4 +7,20 @@ import { Component } from '@angular/core';
   templateUrl: './logo.html',
   styleUrl: './logo.scss',
 })
-export class Logo {}
+export class Logo {
+  http=inject(HttpClient)
+
+  userList=signal<any>([])
+
+  ngOnInit():void{
+    this.getAllusers()
+  }
+
+  getAllusers(){
+    this.http.get('https://projectapi.gerasim.in/api/UserApp/GetAllUsers').subscribe({
+      next:(response:any)=>{
+        this.userList=response.data
+      }
+    })
+  }
+}
