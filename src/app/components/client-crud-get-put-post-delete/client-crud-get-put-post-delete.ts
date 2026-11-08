@@ -2,14 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { Master } from '../../services/master';
+import { PageHeader } from '../../reusable/page-header/page-header';
+import { Card } from '../../reusable/card/card';
+import { MyButton } from '../../reusable/my-button/my-button';
 
 @Component({
   selector: 'app-client-crud-get-put-post-delete',
-  imports: [FormField],
+  imports: [FormField, PageHeader, Card, MyButton],
   templateUrl: './client-crud-get-put-post-delete.html',
   styleUrl: './client-crud-get-put-post-delete.scss',
 })
 export class ClientCrudGETPUTPostDelete {
+
+    title:string=''
+    text:string=''
 
   httpClient = inject(HttpClient)
 
@@ -43,9 +49,11 @@ export class ClientCrudGETPUTPostDelete {
 
   constructor(private masterServ: Master) {
     this.getAllClients()
-    debugger;
+    //debugger;
     const loggeduserName = this.masterServ.loggeduser
     this.formattedClientCardNumber = this.masterServ.getFormatedCardNumber(this.clientCradNumber)
+    this.title='Client-curd component'
+    this.text='This text is from Client-curd component'
   }
   clientsList: WritableSignal<any[]> = signal([])
 
@@ -59,7 +67,7 @@ export class ClientCrudGETPUTPostDelete {
   //   })
   // }
   getAllClients() {
-    debugger
+    //debugger
     this.masterServ.getClients().subscribe({
       next: (response: any) => {
         debugger
@@ -85,7 +93,7 @@ export class ClientCrudGETPUTPostDelete {
   //   })
   // }
   onSavePostClient() {
-    debugger
+    //debugger
     this.masterServ.postSaveClient(this.clientDetailsForm().value()).subscribe({
       next: (response: any) => {
         if (response.result) {
@@ -128,7 +136,7 @@ export class ClientCrudGETPUTPostDelete {
   deletePayload = signal({});
 
   onDelete(cid: number) {
-    debugger;
+    //debugger;
     this.httpClient.post("https://api.freeprojectapi.com/api/SmartParking/DeleteClient?id=" + cid, {}).subscribe({
       next: (response: any) => {
         console.log("Request to clientId =", cid)
