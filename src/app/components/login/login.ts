@@ -20,7 +20,7 @@ export class Login {
   loginObjApi: loginModelApi = new loginModelApi()
 
   onLogin() {
-    debugger
+    //debugger
     //   if (this.loginObj.email == 'abc@gmail.com' && this.loginObj.password == '112233') {
     //     localStorage.setItem('user1',this.loginObj.email)
     //     this.router.navigateByUrl('adminLayout/logo')
@@ -64,6 +64,8 @@ class loginModel {
 
 export class loginModelApi {
 
+  //Email : venky346@gmail.com
+  //Password : 123456
   EmailId: string
   Password: string
   constructor() {

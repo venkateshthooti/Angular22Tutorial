@@ -1,22 +1,28 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { PageHeader } from '../../reusable/page-header/page-header';
 
 @Component({
   selector: 'app-life-cycle-events',
-  imports: [],
+  imports: [PageHeader],
   templateUrl: './life-cycle-events.html',
   styleUrl: './life-cycle-events.scss',
 })
 export class LifeCycleEvents implements OnInit, OnChanges, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, DoCheck, OnDestroy {
 
+    title:string=''
+    text:string=''
   ngOnInit(): void {
     // on this component initialization
     // api call trigger
     //subscription
     console.log('ngOnInit executed after constuctor')
+    
   }
   constructor() {
     console.log('Constructor executed First')
+    this.title=' life-cycle-events component'
+    this.text='This text is from life-cycle-events component'
   }
 
   ngOnChanges(changes: SimpleChanges): void {
