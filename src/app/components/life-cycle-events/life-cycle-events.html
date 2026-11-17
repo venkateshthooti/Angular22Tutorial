@@ -1,5 +1,36 @@
-<app-page-header [headerTitle]="title" [headerText]="text" ></app-page-header>
+<app-page-header [headerTitle]="title" [headerText]="text"></app-page-header>
 
 <p>life-cycle-events works!</p>
+<div class="row">
 
+  <div class="col-3  d-flex align-items-center gap-2 bg-secondary p-3 rounded">
+    <h1 #heading appHighlight [textColor]="'yellow'">This is h1</h1>
+    <button mat-icon-button type="button" appCopyPasteDirective [copyTarget]="heading" aria-label="Copy heading text">
+      <mat-icon aria-hidden="true">content_copy</mat-icon>
+    </button>
+  </div>
 
+  <div class="col-3">
+    <h2 appHighlight appCopyPasteDirective [textColor]="'blue'">This is h2</h2>
+  </div>
+
+  <div class="col-3">
+    <h3 appHighlight appCopyPasteDirective [textColor]="'orange'">This is h3</h3>
+  </div>
+
+  <div class="col-3">
+    <input appHighlight [textColor]="'orange'" placeholder="enter text" />
+  </div>
+
+</div>
+<hr>
+<div class="row">
+
+  <div class="col-3">
+    <input appNumbersOnly type="text" class="form-control" />
+  </div>
+   <div class="col-3">
+    <input type="text" class="form-control" />
+  </div>
+
+</div>
