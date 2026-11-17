@@ -1,9 +1,14 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { PageHeader } from '../../reusable/page-header/page-header';
-
+import { Highlight } from '../../customDirectives/highlight';
+import { CopyPasteDirective } from '../../customDirectives/copy-paste-directive';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { NumbersOnly } from '../../customDirectives/numbers-only';
 @Component({
   selector: 'app-life-cycle-events',
-  imports: [PageHeader],
+  imports: [PageHeader, Highlight, CopyPasteDirective,MatButtonModule, MatIconModule, MatSnackBarModule,NumbersOnly],
   templateUrl: './life-cycle-events.html',
   styleUrl: './life-cycle-events.scss',
 })
