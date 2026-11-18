@@ -17,6 +17,7 @@ import { Login } from './components/login/login';
 import { Layout } from './components/layout/layout';
 import { PageNotfound } from './components/page-notfound/page-notfound';
 import { authGuard } from './guards/auth-guard';
+import { Viewchild } from './components/viewchild/viewchild';
 
 export const routes: Routes = [
     {
@@ -88,8 +89,12 @@ export const routes: Routes = [
                 component: Pipes
             },
             {
-                path: 'life-cycle',
+                path: 'life-cycle-and-customDirectives',
                 component: LifeCycleEvents
+            },
+             {
+                path: 'viewchild',
+                component: Viewchild
             },
 
         ]
