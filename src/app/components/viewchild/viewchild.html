@@ -1,0 +1,29 @@
+<div class="row p-3">
+    <div class="col-3">
+        <input type="text" id="txtName" #tempRefInputName placeholder="enter text" class="form-control">
+    </div>
+      <div class="col-3">
+        <button class="btn btn-warning" (click)="readIputTextValue()" >Read</button>
+    </div>
+</div>
+<div class="row p-3">
+    <div class="col-4">
+        <div class="p-3" #Div11>
+            Div 11
+        </div>
+    </div>
+    <div class="col-3 ">
+        <button class="btn btn-danger" (click)="addBgColor('red')" >Add Red to Div 11</button>
+        <button class="btn btn-primary" (click)="addBgColor('blue')" >Add Blue to Div 11</button>
+    </div>
+</div>
+ <hr>
+ <span>--------------Pipe Component----------------</span>
+<div class="row p-3">
+    <div class="col-6">
+        <app-pipes></app-pipes>
+    </div>
+    <div class="col-6">
+        <button class="btn btn-success" (click)="readPipeComponent()">Pipe data</button>
+    </div>
+</div>
