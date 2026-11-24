@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { loginModelApi } from '../components/login/login';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Service()
 export class Master {
+
+    $selectedRollSubject: Subject<string> = new Subject<string>()  ///observable
+    $selctedRollBehaviourSubject: BehaviorSubject<string> = new BehaviorSubject<string>("") //Observable
 
     loggeduser: string = ''
 
@@ -27,7 +30,7 @@ export class Master {
         return this.http.post("https://api.freeprojectapi.com/api/SmartParking/AddClient", clientFormObj)
     }
 
-    loginUser(loginObjApi: loginModelApi):Observable<any> {
+    loginUser(loginObjApi: loginModelApi): Observable<any> {
         return this.http.post('https://projectapi.gerasim.in/api/UserApp/login', loginObjApi)
     }
 

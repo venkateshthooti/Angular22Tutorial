@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="logo">LOGO</a>
     <!--Absolute path starts with / and navigates from the root application-->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,20 +40,29 @@
           <a class="nav-link text-truncate" routerLinkActive="active" routerLink="clients">Client-Crud-Smart-Parking</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-truncate" routerLinkActive="active" routerLink="bus-booking">Bus-Booking-Client-Crud-Smart-Parking</a>
+          <a class="nav-link text-truncate" routerLinkActive="active"
+            routerLink="bus-booking">Bus-Booking-Client-Crud-Smart-Parking</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-truncate" routerLinkActive="active" routerLink="pipes">Pipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-truncate" routerLinkActive="active" routerLink="life-cycle-and-customDirectives">Life-cycle and customDrectives</a>
+          <a class="nav-link text-truncate" routerLinkActive="active"
+            routerLink="life-cycle-and-customDirectives">Life-cycle and customDrectives</a>
         </li>
-           <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link text-truncate" routerLinkActive="active" routerLink="viewchild">viewchild</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-truncate" routerLinkActive="active" routerLink="rxjs">RXJS</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"/>
+        <select name="" id="" (change)="onRollChange($event)">
+          <option value="admin">admin</option>
+          <option value="guest">guest</option>
+        </select>
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="button">Search</button>
 
         <button class="btn btn-secondary btn-sm">{{loggedUserEmail}}</button>
