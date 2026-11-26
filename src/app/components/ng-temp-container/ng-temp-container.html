@@ -1,0 +1,114 @@
+<span>------------Ng Container---------------</span>
+<div class="row">
+
+    <div class="col-3">
+        <ul>
+            <!-- we can not use two structural directives
+              in one element so use ng container tag
+              is not rendered in dom -->
+            <ng-container *ngFor="let item of studentList">
+                <li *ngIf="item.isActive==true">
+                    {{item.name}}-----{{item.rollNo}}
+                </li>
+            </ng-container>
+
+        </ul>
+    </div>
+
+    <!-- <div class="col-3">
+        <ul>
+            @for (item of studentList; track $index) {
+
+            @if (item.isActive==true) {
+            <li>
+                {{item.name}}-----{{item.rollNo}}
+            </li>
+            }
+
+            }
+
+        </ul>
+    </div> -->
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let item of studentList">
+                <span *ngIf="item.isActive else tempDeActive">Active--{{item.name}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<span>------------Ng Template---------------</span>
+<ng-template #tempDeActive>
+    <span class="text-danger">Student is Deactive</span>
+</ng-template>
+
+
+<ng-template #tempLoggeduserName>
+    <strong class="text-danger">Logged User name : {{loggedUserName}}</strong>
+</ng-template>
+
+<div class="row">
+    <div class="col-3">
+        <div *ngTemplateOutlet="tempLoggeduserName"></div>
+    </div>
+    <div class="col-3">
+        <span *ngTemplateOutlet="tempLoggeduserName"></span>
+    </div>
+    <div class="col-3">
+        <ng-container *ngTemplateOutlet="tempLoggeduserName"></ng-container>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-3">
+        <ng-container
+            *ngTemplateOutlet="myLabel ,context:{iconClass:'fa fa-user',text:'User Name',toolTipText:'Please Enter Valid Name'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+    <div class="col-3">
+        <ng-container
+            *ngTemplateOutlet="myLabel ,context:{iconClass:'fa fa-phone',text:'Enter Mobile',toolTipText:'Enter Valid Mobile no'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+    <div class="col-3">
+        <ng-container
+            *ngTemplateOutlet="myLabel ,context:{iconClass:'fa fa-bank',text:'Enter City',toolTipText:'Enter Valid City'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+    <div class="col-3">
+        <ng-container *ngTemplateOutlet="myLabel ,context:{iconClass:'fa fa-bolt',text:'Enter state'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+    <div class="col-3">
+        <ng-container *ngTemplateOutlet="myLabel ,context:{iconClass:'fa fa-bus',text:'Enter Pincode'}"></ng-container>
+        <input type="text" class="form-control">
+    </div>
+</div>
+
+<ng-template #myLabel let-iconCls="iconClass" let-labelTxt="text" let-tooltip="toolTipText">
+    <label for="" title="{{tooltip}}">
+        <i [class]="iconCls"></i>
+        {{ labelTxt}}
+    </label>
+</ng-template>
+
+<span>--------------Ng-Content--------------</span>
+
+<app-child-ng-content></app-child-ng-content>
+
+<app-child-ng-content >
+    <h2 >Employee Details With Ng content</h2>
+    <p >Employee Name: Venkatesh</p>
+</app-child-ng-content>
+
+<app-child-ng-content>
+    <h2>Department Details with Ng content</h2>
+    <p>Department: Development</p>
+</app-child-ng-content>
+
+<app-child-ng-content>
+  <h2 class="header">Student Details</h2>
+  <p class="body">Student Name: Venkatesh</p>
+  <button class="footer">Student View Details</button>
+</app-child-ng-content>

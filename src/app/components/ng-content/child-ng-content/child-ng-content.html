@@ -1,0 +1,27 @@
+<div class="card m-3">
+  <h2>Employee Details with out Ng content</h2>
+  <p>This is employee information.</p>
+</div>
+
+<div class="card m-3">
+  <ng-content>
+    <p>Fall back content becoz No content provided! by parent</p>
+  </ng-content>
+</div>
+
+<hr>
+-----------------------Using Select Attribute ,multi-slot content projection--------------------------
+<div class="card">
+  <div class="card-header">
+    <ng-content select=".header"></ng-content>
+  </div>
+
+  <div class="card-body">
+    <ng-content select=".body"></ng-content>
+  </div>
+
+  <div class="card-footer">
+    <ng-content select=".footer"></ng-content>
+  </div>
+</div>
+
