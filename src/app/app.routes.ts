@@ -19,6 +19,7 @@ import { PageNotfound } from './components/page-notfound/page-notfound';
 import { authGuard } from './guards/auth-guard';
 import { Viewchild } from './components/viewchild/viewchild';
 import { Rxjs } from './components/rxjs/rxjs';
+import { NgTempContainer } from './components/ng-temp-container/ng-temp-container';
 
 export const routes: Routes = [
     {
@@ -101,6 +102,10 @@ export const routes: Routes = [
                 path: 'rxjs',
                 component: Rxjs
             },
+            {
+                path:'ng-template-container-content',
+                component:NgTempContainer
+            }
 
         ]
     },

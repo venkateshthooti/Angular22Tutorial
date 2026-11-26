@@ -21,7 +21,7 @@ export class Rxjs {
 
   constructor() {
     const promise = new Promise((resolve, reject) => {
-      if (this.rollNo % 2 == -0) {
+      if (this.rollNo % 2 == 0) {
         resolve("Num is odd")
       } else {
         reject("Num is odd")
